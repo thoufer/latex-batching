@@ -22,12 +22,12 @@ No uv?  Create you virtual environment.  The only pthon-dependency is jinja.
 ```
 
  ## Notes, remaining challenges and questions
-    * How does the submitter relate to the primary investigator (e.g., should submitter attributes be elsewhere?)
-    * Currently, I put the the lead_pi_role as an attribute of the project.  If co-leads also have "roles" may be
-        this should be incorportated into the investigator class.
-    * If a project can have more than 2 Investigators then the project class needs modification, and the template 
-        will need looping functionality to print all team members.
-    * If and instance of the investigator only has a name it will be rendered as <name> followed by an em dash
-        but nothing else.  The em dash should only be rendered _if_ there are are attributes to also be rendered
-    * The escape_tex "filter" may need to be applied to more attributes than I currently do.
-    * Should rendered pdfs have a different naming scheme?
+* How does the submitter relate to the primary investigator (e.g., should submitter attributes be elsewhere?)
+* Currently, I put the the lead_pi_role as an attribute of the project.  If co-leads also have "roles" may be
+this should be incorportated into the investigator class. 
+* If a project can have more than 2 Investigators then the project class needs modification, and the template 
+  will need looping functionality to print all team members. 
+* If and instance of the investigator only has a name it will be rendered as <name> followed by an em dash
+    but nothing else.  The em dash should only be rendered _if_ there are are attributes to also be rendered
+* The escape_tex "filter" may need to be applied to more attributes than I currently do.
+* Should rendered pdfs have a different naming scheme?
