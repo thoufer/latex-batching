@@ -1,0 +1,112 @@
+% !TEX TS-program = xelatex
+\documentclass[12pt]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{geometry}
+
+
+% Set the main font to calibri .
+% APTOS is the desired font but its not installed in system fonts but
+% is available in word??
+\setmainfont{Calibri}
+
+% Set page margins
+\geometry{top=1in, bottom=1in, hmargin=1in, head=12pt}
+
+% Create a command to set a font size smaller (header/footer)
+\newcommand{\changefont}{\fontsize{10}{12}\selectfont}
+
+% redefine the maketitle comment
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{flushleft}
+        {\LARGE\bfseries\sffamily\@title\par} \vspace{0.75cm}
+    \end{flushleft}
+}
+\makeatother
+
+
+% Create colors for section headings and header
+% extracted from MS Word template
+\definecolor{darkteal}{RGB}{15,71,97}
+\definecolor{headerblue}{RGB}{21,96,130}
+
+
+% Set the section font color to be dark teal
+\sectionfont{\color{headerblue}}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt} % remove default rule under header
+\fancyhf{}
+\fancyhead[L]{\changefont \textcolor{headerblue}{ {{project.id}}: {{project.title}} }}
+
+\fancyfoot{}
+\fancyfoot[L]{\changefont FY26 CDI Statement of Interest}
+
+\setlength{\parindent}{0pt}     % left justify paragraphs
+\setcounter{secnumdepth}{-1} 	% Do not display section numbers in text
+
+\title{ {{project.id }}: {{project.title}} }
+\date{}
+
+
+\begin{document}
+    \thispagestyle{fancy}
+    \maketitle
+
+    \begin{description}[font=\bfseries, align=left, leftmargin=0cm, style=sameline]
+        \item[Impact:] {{ project.impact_statement }}
+
+        \item[Relation to themes:] {{ project.theme_explanation }}
+
+        \item[Most relevant SSF elements:]
+            {% for element in project.ssf_elements -%}
+                {{ element }} {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+    \end{description}
+
+    \section{What are you trying to do?}
+    {{ project.objective | escape_tex }}
+
+    \section{Who will benefit?}
+    {{ project.benefits | escape_tex }}
+
+    \section{How will you measure success?}
+    {{ project.measure_success | escape_tex }}
+
+    \section{Project Team}
+    \textbf{ {{ project.lead_pi.name }} ---} {{ project.lead_pi.center }}; {{ project.lead_pi.career_stage }}; {{ project.lead_role | escape_tex }}
+
+    {% if project.co_lead %}
+    {# only create if a co lead is present in the project. #}
+
+    \vspace{\baselineskip}
+    \textbf{ {{ project.co_lead.name }} ---}
+    {% for element in (project.co_lead.center, project.co_lead.career_stage) -%}
+       {{ element | default("", True) | escape_tex }} {%- if not loop.last and element is not none -%}; {% endif %}
+    {%- endfor %}
+
+    {% endif %}
+
+    \section{Estimated Budget}
+
+    \vspace{1in}
+    \begin{center}
+    \begin{tabular}{|l | c | c |}
+        \hline
+        Budget Category                                 &   Federal Funding Requested   &   Matching Funds \\
+        \hline
+        1. PERSONNEL SALARIES (including benefits):     &                               &                  \\
+        \hline
+        2. TRAVEL EXPENSES:                             &                               &                  \\
+        \hline
+        3. OTHER DIRECT COSTS:                          &                               &                  \\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{document}
