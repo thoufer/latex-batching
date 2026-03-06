@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/soi-template.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+    <header class="header=content header-blue">
+        <span class="text-small">{{project.id}}: {{project.title}}</span>
+    </header>
+
+    <h1>{{project.id}}: {{project.title}}</h1>
+
+    <div>
+        <dl>
+            <dt>Impact</dt><dd>{{ project.impact_statement }}</dd>
+            <dt>Relation to themes</dt><dd>{{ project.theme_explanation }}</dd>
+            <dt>Most relevant SSF elements</dt>
+                <dd>
+                    {% for element in project.ssf_elements -%}
+                        {{ element }} {%- if not loop.last -%}, {% endif %}
+                    {%- endfor %}
+                </dd>
+        </dl>
+    </div>
+    <div>
+        <h2>What are you trying to do?</h2>
+         {{ project.objective }}
+    </div>
+    <div>
+        <h2>Who will benefit?</h2>
+        {{ project.benefits }}
+    </div>
+    <div>
+        <h2>How will you measure success?</h2>
+        {{ project.measure_success }}
+    </div>
+    <div>
+        <h2>Project Team</h2>
+        <p>
+            <span class="text-bold">{{ project.lead_pi.name }} ---</span> {{ project.lead_pi.center }}; {{ project.lead_pi.career_stage }}; {{ project.lead_role }}
+        </p>
+
+        {# only create if a co lead is present in the project. #}
+        {% if project.co_lead %}
+            <p>
+                <span class="text-bold">{{ project.co_lead.name }} ---</span>
+                {% for element in (project.co_lead.center, project.co_lead.career_stage) -%}
+                    {{ element | default("", True) }} {%- if not loop.last and element is not none -%}; {% endif %}
+                {%- endfor %}
+            </p>
+        {% endif %}
+    </div>
+    <div>
+        <h2>Estimated Budget</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Budget Category</th>
+                    <th>Federal Funding Requested</th>
+                    <th>Matching Funds</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>1. SALARIES (including benefits):</td>
+                <td style="text-align: center;">$0</td>
+                <td style="text-align: center;">$0</td>
+            </tr>
+            <tr>
+                <td>2. TRAVEL EXPENSES:</td>
+                <td style="text-align: center;">$0</td>
+                <td style="text-align: center;">$0</td>
+            </tr>
+            <tr>
+                <td>3. OTHER DIRECT COSTS:</td>
+                <td style="text-align: center;">$0</td>
+                <td style="text-align: center;">$0</td>
+            </tr>
+            <tr>
+                <td>Grand Total</td>
+                <td style="text-align: center;">$0</td>
+                <td style="text-align: center;">$0</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer class="footer-content">
+        <span class="text-small">FY26 CDI Statement of Interest</span>
+    </footer>
+</body>
+</html>

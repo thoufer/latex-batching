@@ -1,0 +1,114 @@
+/*
+    LaTeX font sizing to pixel sizing
+    --------------------------------
+    \small: 10pt = 12-13px
+    \normalsize: 12pt = 16px
+    \large: 14pt = 18px
+    \Large: 17pt = 22px
+    \LARGE: 20pt = 26-27px
+    \huge: 25pt = 33px
+    \Huge: 25pt = 33px
+*/
+@media print {
+    @page {
+        margin: 1in;
+        size: letter;
+    }
+
+    /*@font-face {
+        font-family: "Calibri";
+        src: url("fonts/Calibri.ttf"} format('truetype');
+    }*/
+
+   @top-left {
+        content: element(header-content);
+        padding-bottom: 5px;
+   }
+
+   @bottom-left {
+        content: element(footer);
+        padding-top: 5px;
+   }
+
+   header.header-content {
+        position: running(header-content);
+   }
+
+   footer.footer-content {
+       position: running(footer)
+   }
+}
+
+@media screen {
+    body {
+        margin-left: 1in;
+        margin-right: 2in;
+        margin-bottom: 1in;
+    }
+
+    header {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+body {
+    font-size: 16px; /* Base font size which equates to 12pt */
+    text-align: left;
+    /*font-family: "Calibri";*/
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+h1 {
+  color: black;
+  font-size: 2.22em; /* Latex \LARGE */
+}
+
+h2 {
+  color: rgb(21,96,130);
+  font-size: 1.375em; /* latex \Large */
+  margin: 20px 0px 5px 0px;
+}
+
+p {
+  font-size: 1em;
+  margin: 0;
+}
+
+.flex-list .list-item {
+  display: flex;
+  /* Optional: adds some vertical spacing between items */
+  margin-bottom: 10px;
+}
+
+.flex-list dt {
+  /* Optional: controls the width of the term column */
+  flex-basis: 150px;
+  font-weight: bold;
+  margin-right: 10px; /* Adds space between the term and description */
+}
+
+.flex-list dd {
+  /* Ensures the description flows correctly */
+  margin: 0;
+  flex: 1;
+}
+
+dt::after {
+    content: ": ";
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-small {
+    size: 12px;
+}
+
+.header-blue {
+    color: rgb(21,96,130);
+}
