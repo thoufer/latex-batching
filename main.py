@@ -1,11 +1,9 @@
 import subprocess
 
-from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 
-import utils
 from src.parser import read_cdi_csv
-
+from src.templates import env
 
 def _compile(file, build_target) -> int:
     """ Compile the provided tex file to a pdf and return the result code of compilation
@@ -55,12 +53,6 @@ def main(file: str, build_target: str, keep_tex_source: bool = True) -> None:
 
     :return: None
     """
-    # Setup jinja environmnent and load the necssary template
-    env = Environment(loader=FileSystemLoader(Path('templates')))
-
-    # Add helper to jinja filters so certain characters render correctly in tex file.
-    env.filters['escape_tex'] = utils.escape_tex
-
     template = env.get_template('soi-template.tex.jinja')
 
     # Grab data.  This is a generator so it returns 1 row each time
