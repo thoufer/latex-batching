@@ -42,13 +42,14 @@
     <div>
         <h2>Project Team</h2>
         <p>
-            <span class="text-bold">{{ project.lead_pi.name }} ---</span> {{ project.lead_pi.center }}; {{ project.lead_pi.career_stage }}; {{ project.lead_role }}
+            <span class="text-bold">{{ project.lead_pi.name }} &mdash;</span> {{
+            project.lead_pi.center }}; {{ project.lead_pi.career_stage }}; {{ project.lead_role }}
         </p>
 
         {# only create if a co lead is present in the project. #}
         {% if project.co_lead %}
             <p>
-                <span class="text-bold">{{ project.co_lead.name }} ---</span>
+                <span class="text-bold">{{ project.co_lead.name }} &mdash;</span>
                 {% for element in (project.co_lead.center, project.co_lead.career_stage) -%}
                     {{ element | default("", True) }} {%- if not loop.last and element is not none -%}; {% endif %}
                 {%- endfor %}
