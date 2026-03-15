@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="css/soi-template.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/soi-template.css">
     <title>Title</title>
 </head>
 <body>
-    <header class="header=content header-blue">
-        <span class="text-small">{{project.id}}: {{project.title}}</span>
-    </header>
+    <div class="header-content">
+        {{project.id}}: {{project.title}}
+    </div>
+    <div class="footer-content">
+        FY26 CDI Statement of Interest
+    </div>
 
     <h1>{{project.id}}: {{project.title}}</h1>
 
@@ -85,9 +88,5 @@
             </tr>
         </table>
     </div>
-
-    <footer class="footer-content">
-        <span class="text-small">FY26 CDI Statement of Interest</span>
-    </footer>
 </body>
 </html>
