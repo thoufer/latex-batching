@@ -9,16 +9,10 @@
     \huge: 25pt = 33px
     \Huge: 25pt = 33px
 */
-@media print {
-    @page {
-        margin: 1in;
-        size: letter;
-    }
 
-    /*@font-face {
-        font-family: "Calibri";
-        src: url("fonts/Calibri.ttf"} format('truetype');
-    }*/
+@page {
+    margin: 1in .75in 1in .75in;
+    size: letter portrait;
 
    @top-left {
         content: element(header-content);
@@ -26,33 +20,9 @@
    }
 
    @bottom-left {
-        content: element(footer);
+        content: element(footer-content);
         padding-top: 5px;
    }
-
-   header.header-content {
-        position: running(header-content);
-   }
-
-   footer.footer-content {
-       position: running(footer)
-   }
-}
-
-@media screen {
-    body {
-        margin-left: 1in;
-        margin-right: 2in;
-        margin-bottom: 1in;
-    }
-
-    header {
-        display: none;
-    }
-
-    footer {
-        display: none;
-    }
 }
 
 body {
@@ -60,6 +30,18 @@ body {
     text-align: left;
     /*font-family: "Calibri";*/
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.header-content {
+    position: running(header-content);
+    font-size: 10pt;
+    color: rgb(21,96,130);
+}
+
+.footer-content {
+    position: running(footer-content);
+    font-size: 10pt;
+    bottom: 0;
 }
 
 h1 {
