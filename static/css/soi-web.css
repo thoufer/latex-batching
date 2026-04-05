@@ -1,0 +1,90 @@
+/*
+    LaTeX font sizing to pixel sizing
+    --------------------------------
+    \small: 10pt = 12-13px
+    \normalsize: 12pt = 16px
+    \large: 14pt = 18px
+    \Large: 17pt = 22px
+    \LARGE: 20pt = 26-27px
+    \huge: 25pt = 33px
+    \Huge: 25pt = 33px
+*/
+
+@media screen {
+    .header-content {
+        display: none;
+    }
+
+    .footer-content {
+        display: none;
+    }
+}
+
+body {
+    font-size: 16px; /* Base font size which equates to 12pt */
+    text-align: left;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.header-content {
+    position: running(header-content);
+    font-size: 10pt;
+    color: rgb(21,96,130);
+}
+
+.footer-content {
+    position: running(footer-content);
+    font-size: 10pt;
+    bottom: 0;
+}
+
+h1 {
+  color: black;
+  font-size: 2.22em; /* Latex \LARGE */
+}
+
+h2 {
+  color: rgb(21,96,130);
+  font-size: 1.375em; /* latex \Large */
+  margin: 20px 0px 5px 0px;
+}
+
+p {
+  font-size: 1em;
+  margin: 0;
+}
+
+.flex-list .list-item {
+  display: flex;
+  /* Optional: adds some vertical spacing between items */
+  margin-bottom: 10px;
+}
+
+.flex-list dt {
+  /* Optional: controls the width of the term column */
+  flex-basis: 150px;
+  font-weight: bold;
+  margin-right: 10px; /* Adds space between the term and description */
+}
+
+.flex-list dd {
+  /* Ensures the description flows correctly */
+  margin: 0;
+  flex: 1;
+}
+
+dt::after {
+    content: ": ";
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.header-blue {
+    color: rgb(21,96,130);
+}
